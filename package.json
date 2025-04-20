@@ -1,0 +1,49 @@
+{
+  "name": "ajs-hw-7-regex",
+  "version": "1.0.0",
+  "description": "Домашнее задание к лекции «Регулярные выражения»",
+  "homepage": "https://github.com/NMYurchenko-max/ajs-hw-7-regex#readme",
+  "bugs": {
+    "url": "https://github.com/NMYurchenko-max/ajs-hw-7-regex/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NMYurchenko-max/ajs-hw-7-regex.git"
+  },
+  "license": "ISC",
+  "author": "N.Yurchenko",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
+    "test": "jest --coverage",
+    "lint": "eslint --fix .",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.27.0",
+    "@babel/core": "^7.26.10",
+    "@babel/eslint-parser": "^7.27.0",
+    "@babel/preset-env": "^7.26.9",
+    "@eslint/js": "^9.23.0",
+    "babel-jest": "^29.7.0",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "eslint": "^9.23.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jest": "^28.11.0",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.3",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "mini-css-extract-plugin": "^2.9.2",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
+  },
+  "dependencies": {
+    "core-js": "^3.41.0",
+    "globals": "^16.0.0"
+  }
+}

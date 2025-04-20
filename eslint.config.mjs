@@ -1,49 +1,44 @@
+import { defineConfig } from "eslint/config";
 import globals from "globals";
-import pluginJs from "@eslint/js";
 import jest from "eslint-plugin-jest";
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import js from "@eslint/js";
 
-export default [
-  {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-        test: true,
-        expect: true,
-      },
-      parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module",
-      },
+
+export default defineConfig([
+    {
+        files: ["**/*.{js,mjs,cjs}"]
     },
-  },
-  pluginJs.configs.recommended,
-  eslintPluginPrettierRecommended,
-  {
-    rules: {
-      "linebreak-style": "off",
-      quotes: "off",
-      "object-curly-newline": ["error", { multiline: true, consistent: true }],
-      "no-plusplus": "off",
-      "no-console": "off",
-      "no-debugger": "off",
-      "no-mixed-operators": "off",
-      "prettier/prettier": "off",
+    {
+        files: ["**/**/*.{js,mjs,cjs}"],
+        languageOptions: {
+            globals: { ...globals.browser, ...globals.node }
+        }
     },
-  },
-  {
-    ignores: ["dist/*", "coverage/*"],
-  },
-  {
-    files: ["**/*.test.js"],
-    plugins: { jest },
-    ...jest.configs["flat/recommended"],
-    rules: {
-      ...jest.configs["flat/recommended"].rules,
-      "jest/prefer-expect-assertions": "off",
-      "jest/expect-expect": "error",
-      "jest/valid-title": "off",
+    {
+        files: ["**/**/*.{js,mjs,cjs}"],
+        plugins: { js },
+        extends: ["js/recommended"],
+        rules: {
+            quotes: "off",
+            "linebreak-style": "off",
+            "object-curly-newline": ["error", { multiline: true, consistent: true }],
+            "no-plusplus": "off",
+            "no-console": "off",
+            "no-debugger": "off",
+            "no-mixed-operators": "off",
+            "prettier/prettier": "off",
+        }
     },
-  },
-];
+    {
+        ignores: ["dist/*", "coverage/*"],
+    },
+    {
+        files: ["**/*.test.js"],
+        ...jest.configs["flat/recommended"],
+        rules: {
+            ...jest.configs["flat/recommended"].rules,
+            "jest/prefer-expect-assertions": "off",
+            "jest/expect-expect": "error",
+        },
+    },
+]);
